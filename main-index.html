@@ -1,0 +1,683 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+<title>Rebecca's Portfolio</title>
+ 
+<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" rel="stylesheet" type="text/css">
+ 
+<style>
+body { font-family: "Lato", sans-serif; }
+ 
+a { text-decoration: none; }
+ 
+.spa-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: left;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  text-align: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  /*padding: 0 2em;*/
+  height: 75px;
+  z-index: 2;
+  -webkit-transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+ 
+.spa-header--scrolled {
+  background: #fafafa;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+ 
+.spa-header--move-up {
+  -webkit-transform: translateY(-75px);
+  transform: translateY(-75px);
+  -webkit-transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+ 
+.spa-header__logo {
+    color: #000;
+    position: left;
+    margin-top: -1px;
+    margin-left: 2px;
+}
+.spa-header__link {
+  margin-left: 1em;
+  color: #000;
+}
+ 
+.spa-header__social-media {
+  right:100px;
+  align-content: right !important;
+  justify-content: right !important;
+  float:right !important;
+  margin-left: -1px;
+  margin-right: 1.5%;
+}
+ 
+.main-page {
+    background-image: url("images/background.png") !important;
+    background-size: cover !important;
+}
+ 
+.sticky-nav-tabs, .spa-slide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  background: #eee;
+  text-align: center;
+  padding: 0 2em;
+}
+ 
+.sticky-nav-tabs h1, .spa-slide h1 {
+  font-size: 2rem;
+  margin: 0;
+  letter-spacing: .8rem;
+}
+ 
+.sticky-nav-tabs h2, .spa-slide h2 {
+  font-size: 2rem;
+  letter-spacing: .5rem;
+}
+.sticky-nav-tabs h3, .spa-slide h3 {
+  font-size: 1rem;
+  letter-spacing: 0.2rem;
+  opacity: 0.6;
+  padding-top: -30px;
+  padding-bottom: 40px;
+}
+.sticky-nav-tabs h4, .spa-slide h4 {
+  font-size: 1rem;
+  letter-spacing: 0.2rem;
+  opacity: 0.6;
+  padding-top: -30px;
+  padding-bottom: 40px;
+  color: #d7bef4;
+}
+.sticky-nav-tabs-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 75px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  background: #fafafa;
+  z-index: 1;
+  -webkit-transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+ 
+.sticky-nav-tabs-container--top-first {
+  position: fixed;
+  top: 75px;
+  -webkit-transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+ 
+.sticky-nav-tabs-container--top-second {
+  position: fixed;
+  top: 0;
+}
+ 
+.sticky-nav-tab {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  color: #000;
+  letter-spacing: 0.1rem;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  font-size: 0.8rem;
+}
+ 
+.sticky-nav-tab:hover {
+  color: white;
+  background: rgba(102, 177, 241, 0.8);
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+ 
+.welcome {
+    padding-bottom: 310px;
+    color: #eee;
+}
+ 
+.sticky-nav-tab-slider {
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 6px;
+  background: #66B1F1;
+  -webkit-transition: left 0.3s ease;
+  transition: left 0.3s ease;
+}
+ @media (min-width: 800px) {
+ 
+.sticky-nav-tabs h1,  .spa-slide h1 { font-size: 3.3rem; }
+ 
+.sticky-nav-tabs h2,  .spa-slide h2 { font-size: 3rem; }
+ 
+.sticky-nav-tabs h3,  .spa-slide h3 { font-size: 1rem; }
+
+.sticky-nav-tabs h4,  .spa-slide h4 { font-size: 1rem; }
+ 
+.sticky-nav-tab { font-size: 1rem; }
+}
+</style>
+</head>
+ 
+<body>
+<header class="spa-h1header">
+  <div class="spa-header"> <a href="" class="spa-header__logo">
+      <img src=images/headshot.png width="55" height="55" hspace="30px"> </a>
+      <a href="https://instagram.com/b.zhou/" target="_blank" class="spa-header__social-media" >  <img src=https://www.shareicon.net/data/128x128/2017/02/07/878228_camera_512x512.png width="40" height="40" align-content="right" !important justify-content="right"!important> </a>
+      <a href=https://twitter.com/traderzhous target="_blank" class="spa-header__social-media"> <img src=https://www.shareicon.net/data/128x128/2016/10/18/844122_media_512x512.png width="40" height="40"> </a>
+      <a href="https://www.youtube.com/user/beccazhou" target="_blank" class="spa-header__social-media"> <img src=https://www.shareicon.net/data/128x128/2016/10/18/844119_media_512x512.png width="40" height="40"> </a>
+      <a href="https://www.linkedin.com/in/beccazhou/" target="_blank" class="spa-header__social-media"> <img src=https://www.shareicon.net/data/128x128/2016/12/21/865490_media_512x512.png width="40" height="40"> </a> </div>
+</header>
+ 
+<!--- MAIN HEADER SECTIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN-->    
+
+<section class="sticky-nav-tabs main-page">
+<div class="welcome">
+  <h1>Welcome to Rebecca's Portfolio</h1>
+</div>
+  <div class="sticky-nav-tabs-container"> <a class="sticky-nav-tab" href="#tab-about">About Becca</a> <a class="sticky-nav-tab" href="#tab-videos">Videos</a> <a class="sticky-nav-tab" href="#tab-contact">Contact</a> <span class="sticky-nav-tab-slider"></span> </div>
+</section>
+<main class="spa-main">
+ 
+<!--- ABOUT MEEEEEEEE SECTIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN-->
+ 
+  <section class="spa-slide" id="tab-about">
+  
+      <vid-head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+          <link rel="stylesheet" href="css/vidbackground-style.css">
+
+
+      </vid-head>
+
+      <vid-body>
+
+      <iframe width="888.88" height="500" src="https://www.youtube.com/embed/oFELtd8XlrE?rel=0" frameborder="0" allow="autoplay; encrypted-media " allowfullscreen></iframe>
+    <h4><a href="https://lh3.googleusercontent.com/YAPMjWe5gmXTng5phxY1V32ktG_apZXqcVhG2vBDhEZEvor4q9pP-8q5TpcuFbJpAWxPi8y3P5TFDg7Hp9fGE10BxxQDtDAsiHvx3F7w_WD8L9ZW5BrE4ntJUcyyVgttubNGkwFhSahflpWiJzyce097b7DDkiI6k0DVHctiGA2mC8nhqlHGmTVbTAmTj5NQ00-cvFAJ0uhX2w_eThCTy3X61kvJ6EnrrFaTGTL8epckqItkptqfVEbVS-JKtYN6Kx5xLXF_ja4YW0q07do-VF_PfnBhz-04dxDkwgTyIZA3DjZWZ6FPu1asc_utJTHOjbT0sEX0sAJDrYKGF8bZEbEwMaE51pxa1d1qrbP7fKqLI-y0ZmLHmV0ch0aTXUiHP9bQp2JMUDXYliBfHF5sA53tOgsEnaNTGdvCRpu2o03jKpb9x7ReogrusNJT_8vAJVPUcWLOaYXrDzw8VMCv4bNw0wSVshgTWLNERiNWCQde8oosH0PREwPwGczFmWo333VjzIyJHKLHnNXr7iOpTY-FskVbznXHtnTH6_jdNmIU_YM8hBntacxnN5IQPNGMXfIf5aXrwb-lXn-JlVmO2gaPB232UfxDNiBDTflUPyr0f8ruWHLaZwS6qmlKV2CmG3pEefg2cZbZTaDagXGNXULX9dsBQJxq=w544-h703-no" target="_blank">CLICK HERE FOR MY RESUME!</a></h4>
+
+</vid-body>
+</section>
+     
+<!--- VIDEO SECTIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN-->
+ 
+<section class="spa-slide" id="tab-videos">
+  <h2>Video Portfolio</h2>
+  <h3>Enjoy this shiz I made okthxbye.</h3>
+  <grid-head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Elastic Grid | JQuery Responsive Porfolio" />
+    <meta name="keywords" content="responsive grid, responsive gallery, porfolio, thumbnails, grid, preview, google image search, jquery, image grid, expanding, preview, portfolio" />
+    <meta name="author" content="Vu Khanh Truong | porfolio.bonchen.net" />
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css/elastic_grid.min.css" />
+</grid-head>
+<grid-body style="background:#fff;">
+<div id="elastic_grid_demo"></div>
+ 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="js/modernizr.custom.js"></script>
+<script src="js/classie.js"></script>
+ 
+<script type="text/javascript" src="js/jquery.elastislide.js"></script>
+<script type="text/javascript" src="js/jquery.hoverdir.js"></script>
+<script type="text/javascript" src="js/elastic_grid.js"></script>
+ 
+<script type="text/javascript">
+    $(function(){
+        $("#elastic_grid_demo").elastic_grid({
+            'showAllText' : 'All',
+            'filterEffect': 'popup', // moveup, scaleup, fallperspective, fly, flip, helix , popup
+            'hoverDirection': true,
+            'hoverDelay': 0,
+            'hoverInverse': false,
+            'expandingSpeed': 500,
+            'expandingHeight': 500,
+            'items' :
+            [
+                {
+                    'title'         : 'The Happiest Place',
+                    'description'   : 'When Larry surprised my Mom with a proposal in Disney',
+                    'thumbnail'     : ['images/small/disney.jpg', 'images/small/2.jpg', 'images/small/3.jpg', 'images/small/10.jpg', 'images/small/11.jpg'],
+                    'large'         : ['https://youtu.be/vreMuS8I6lE'],
+                    'img_title'     : [ ],
+                    'button_list'   : [ ],
+                    'tags'          : ['Life']
+                },
+                {
+                    'title'         : 'Rebecca (tries to) Make Mooncakes',
+                    'description'   : 'A HILARIOUS mish-mash of cooking for the Moon Festival. For reference, below you can see what a mooncake is supposed to be... and what I made.',
+                    'thumbnail'     : ['images/small/mooncakes.jpg', 'images/small/5.jpg', 'images/small/6.jpg', 'images/small/7.jpg'],
+                    'large'         : ['https://youtu.be/RIy5zMB6fi0'],
+                    'img_title'     : [  ],
+                    'button_list'   : [  ],
+                    'tags'          : ['Life']
+                },
+                {
+                    'title'         : 'I Did Not Make Ice Cream.',
+                    'description'   : 'That one time when I promised too many friends free ice cream and had to spend two weeks cooking 24 batches of that cow milk.',
+                    'thumbnail'     : ['images/small/ice-cream.jpg','images/small/8.jpg', 'images/small/9.jpg', 'images/small/10.jpg'],
+                    'large'         : ['https://youtu.be/r7zF-GWHLKI'],
+                    'img_title'     : [  ],
+                    'button_list'   : [  ],
+                    'tags'          : ['Life']
+                },
+                {
+                    'title'         : 'Mom is Movin!!!',
+                    'description'   : 'After living in York, PA for 20 years, my mom seeks a change of scenery.',
+                    'thumbnail'     : ['images/small/mom-moving.jpg', 'images/small/13.jpg', 'images/small/14.jpg', 'images/small/15.jpg', 'images/small/16.jpg'],
+                    'large'         : ['https://youtu.be/jJ7mJ2qLooE' ],
+                    'img_title'     : [ ],
+                    'button_list'   : [ ],
+                    'tags'          : ['Life']
+                },
+                {
+                    'title'         : 'Oakland vid AKA i love my friends',
+                    'description'   : 'a lil tear-jerker vid about the friends I love in the city I love',
+                    'thumbnail'     : ['images/small/oakland.jpg','images/small/8.jpg', 'images/small/9.jpg', 'images/small/10.jpg'],
+                    'large'         : ['https://youtu.be/5VNP1duF8Do' ],
+                    'img_title'     : [ ],
+                    'button_list'   : [  ],
+                    'tags'          : ['Life']
+                },
+                {
+                    'title'         : 'Rebecca Takes on Scotland',
+                    'description'   : 'July-August 2016 I backpacked the John Muir Trail in Scotland. By myself. For three weeks.',
+                    'thumbnail'     : ['images/small/scotland.jpg','images/small/15.jpg', 'images/small/11.jpg', 'images/small/10.jpg'],
+                    'large'         : ['https://youtu.be/zUObiUnDlPk' ],
+                    'img_title'     : [ ],
+                    'button_list'   : [ ],
+                    'tags'          : ['Travel']
+                },
+                 {
+                    'title'         : 'Pitt in Ecuador (Short Version)',
+                    'description'   : 'June 2016 studied abroad',
+                    'thumbnail'     : ['images/small/ecuador-1.jpg', 'images/small/18.jpg', 'images/small/19.jpg', 'images/small/20.jpg'],
+                    'large'         : ['https://youtu.be/3f-Q6dqxPhc' ],
+                    'img_title'     : [ ],
+                    'button_list'   : [     ],
+                    'tags'          : ['Travel']
+                },
+                {
+                    'title'         : 'Pitt in Ecuador (Long Version)',
+                    'description'   : 'June 2016 studied abroad',
+                    'thumbnail'     : ['images/small/ecuador-2.jpg','images/small/15.jpg', 'images/small/11.jpg', 'images/small/10.jpg'],
+                    'large'         : ['https://youtu.be/DUAx5h2CoQQ' ],
+                    'img_title'     : [ ],
+                    'button_list'   : [ ],
+                    'tags'          : ['Travel']
+                }
+            ]
+        });
+    });
+</script>
+</grid-body>
+ 
+  </section>
+ 
+
+<!--- CONTACT FORM SECTIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN-->
+    
+ 
+  <section class="spa-slide" id="tab-contact">
+    <h2>Send Me a Message!</h2>
+    <h3>I don't bite, I promise...</h3>
+      <contact-head>
+  <meta charset="UTF-8">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+ 
+<link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+ 
+<link href="http://dev.see8ch.com/see8ch/v3/fonts/ss-social/ss-social.css" rel="stylesheet" />
+ 
+<link href="http://dev.see8ch.com/see8ch/v3/fonts/ss-standard/ss-standard.css" rel="stylesheet" />
+ 
+ 
+      <style>
+      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+      contact-body {
+  background: #efefef;
+  font-size: 62.5%;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  color: #B6B6B6;
+}
+contact-body section {
+  background: white;
+  margin: 30px auto 70px;
+  text-align: center;
+  padding: 50px 0 60px;
+  width: 80%;
+  max-width: 1100px;
+  min-width: 800px;
+}
+ 
+form {
+  width: 58.3333333333%;
+  margin: 0 auto;
+}
+form .field {
+  width: 100%;
+  position: relative;
+  margin-bottom: 15px;
+}
+form .field label {
+  text-transform: uppercase;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #313A3D;
+  width: 100%;
+  padding: 18px 0;
+  font-size: 1.45em;
+  letter-spacing: 0.075em;
+  -webkit-transition: all 333ms ease-in-out;
+  -moz-transition: all 333ms ease-in-out;
+  -o-transition: all 333ms ease-in-out;
+  -ms-transition: all 333ms ease-in-out;
+  transition: all 333ms ease-in-out;
+}
+form .field label + span {
+  font-family: 'SSStandard';
+  opacity: 0;
+  color: white;
+  display: block;
+  position: absolute;
+  top: 12px;
+  left: 3.5%;
+  font-size: 2.5em;
+  text-shadow: 1px 2px 0 #cd6302;
+  -webkit-transition: all 333ms ease-in-out;
+  -moz-transition: all 333ms ease-in-out;
+  -o-transition: all 333ms ease-in-out;
+  -ms-transition: all 333ms ease-in-out;
+  transition: all 333ms ease-in-out;
+}
+form .field input[type="text"],
+form .field textarea {
+  border: none;
+  background: #E8E9EA;
+  width: 100%;
+  margin: 0;
+  padding: 18px 0;
+  padding-left: 19.5%;
+  color: #313A3D;
+  font-size: 1.4em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+form .field input[type="text"]#msg,
+form .field textarea#msg {
+  height: 52px;
+  resize: none;
+  -webkit-transition: all 333ms ease-in-out;
+  -moz-transition: all 333ms ease-in-out;
+  -o-transition: all 333ms ease-in-out;
+  -ms-transition: all 333ms ease-in-out;
+  transition: all 333ms ease-in-out;
+}
+form .field input[type="text"]:focus, form .field input[type="text"].focused,
+form .field textarea:focus,
+form .field textarea.focused {
+  outline: none;
+}
+form .field input[type="text"]:focus#msg, form .field input[type="text"].focused#msg,
+form .field textarea:focus#msg,
+form .field textarea.focused#msg {
+  padding-bottom: 150px;
+}
+form .field input[type="text"]:focus + label, form .field input[type="text"].focused + label,
+form .field textarea:focus + label,
+form .field textarea.focused + label {
+  width: 18%;
+  background: #FD9638;
+  color: #313A3D;
+}
+form .field input[type="text"].focused + label,
+form .field textarea.focused + label {
+  color: #FD9638;
+}
+form .field:hover label {
+  width: 18%;
+  background: #313A3D;
+  color: white;
+}
+form input[type="submit"] {
+  background: #FD9638;
+  color: white;
+  -webkit-appearance: none;
+  border: none;
+  text-transform: uppercase;
+  position: relative;
+  padding: 13px 50px;
+  font-size: 1.4em;
+  letter-spacing: 0.1em;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  -webkit-transition: all 333ms ease-in-out;
+  -moz-transition: all 333ms ease-in-out;
+  -o-transition: all 333ms ease-in-out;
+  -ms-transition: all 333ms ease-in-out;
+  transition: all 333ms ease-in-out;
+}
+form input[type="submit"]:hover {
+  background: #313A3D;
+  color: #FD9638;
+}
+form input[type="submit"]:focus {
+  outline: none;
+  background: #cd6302;
+}
+ 
+    </style>
+ 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+ 
+</contact-head>
+ 
+<contact-body>
+ 
+    <section id="hire">
+ 
+    <form name="form" action="form_handler.php" method="post">
+          <div class="field name-box">
+                <input type="text" id="name" placeholder="Who Are You?"/>
+                <label for="name">Name</label>
+                <span class="ss-icon">neat!</span>
+          </div>
+ 
+          <div class="field email-box">
+                <input type="text" id="email" placeholder="name@email.com"/>
+                <label for="email">Email</label>
+                <span class="ss-icon">cool!</span>
+          </div>
+ 
+          <div class="field msg-box">
+                <textarea id="msg" rows="4" placeholder="Your message goes here..."></textarea>
+                <label for="msg">Msg</label>
+                <span class="ss-icon">wow!</span>
+          </div>
+ 
+          <input class="button" type="submit" value="Send" />
+  </form>
+</section>
+ 
+ 
+    <script  src="js/index.js"></script>
+ 
+ 
+ 
+      </contact-body>
+  </section>
+</main>
+ 
+<!--- JAVA SHIT SECTIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN-->
+
+ 
+<script>
+class StickyNavigation {
+ 
+    constructor() {
+        this.currentId = null;
+        this.currentTab = null;
+        this.tabContainerHeight = 70;
+        this.lastScroll = 0;
+        let self = this;
+        $('.sticky-nav-tab').click(function() {
+            self.onTabClick(event, $(this));
+        });
+        $(window).scroll(() => { this.onScroll(); });
+        $(window).resize(() => { this.onResize(); });
+    }
+ 
+    onTabClick(event, element) {
+        event.preventDefault();
+        let scrollTop = $(element.attr('href')).offset().top - this.tabContainerHeight + 1;
+        $('html, body').animate({ scrollTop: scrollTop }, 600);
+    }
+ 
+    onScroll() {
+        this.checkHeaderPosition();
+    this.findCurrentTabSelector();
+        this.lastScroll = $(window).scrollTop();
+    }
+ 
+    onResize() {
+        if(this.currentId) {
+            this.setSliderCss();
+        }
+    }
+ 
+    checkHeaderPosition() {
+        const headerHeight = 75;
+        if($(window).scrollTop() > headerHeight) {
+            $('.spa-header').addClass('spa-header--scrolled');
+        } else {
+            $('.spa-header').removeClass('spa-header--scrolled');
+        }
+        let offset = ($('.sticky-nav-tabs').offset().top + $('.sticky-nav-tabs').height() - this.tabContainerHeight) - headerHeight;
+        if($(window).scrollTop() > this.lastScroll && $(window).scrollTop() > offset) {
+            $('.spa-header').addClass('spa-header--move-up');
+            $('.sticky-nav-tabs-container').removeClass('sticky-nav-tabs-container--top-first');
+            $('.sticky-nav-tabs-container').addClass('sticky-nav-tabs-container--top-second');
+        }
+        else if($(window).scrollTop() < this.lastScroll && $(window).scrollTop() > offset) {
+            $('.spa-header').removeClass('spa-header--move-up');
+            $('.sticky-nav-tabs-container').removeClass('sticky-nav-tabs-container--top-second');
+            $('.sticky-nav-tabs-container').addClass('sticky-nav-tabs-container--top-first');
+        }
+        else {
+            $('.spa-header').removeClass('spa-header--move-up');
+            $('.sticky-nav-tabs-container').removeClass('sticky-nav-tabs-container--top-first');
+            $('.sticky-nav-tabs-container').removeClass('sticky-nav-tabs-container--top-second');
+        }
+    }
+ 
+    findCurrentTabSelector(element) {
+        let newCurrentId;
+        let newCurrentTab;
+        let self = this;
+        $('.sticky-nav-tab').each(function() {
+            let id = $(this).attr('href');
+            let offsetTop = $(id).offset().top - self.tabContainerHeight;
+            let offsetBottom = $(id).offset().top + $(id).height() - self.tabContainerHeight;
+            if($(window).scrollTop() > offsetTop && $(window).scrollTop() < offsetBottom) {
+                newCurrentId = id;
+                newCurrentTab = $(this);
+            }
+        });
+        if(this.currentId != newCurrentId || this.currentId === null) {
+            this.currentId = newCurrentId;
+            this.currentTab = newCurrentTab;
+            this.setSliderCss();
+        }
+    }
+ 
+    setSliderCss() {
+        let width = 0;
+        let left = 0;
+        if(this.currentTab) {
+            width = this.currentTab.css('width');
+            left = this.currentTab.offset().left;
+        }
+        $('.sticky-nav-tab-slider').css('width', width);
+        $('.sticky-nav-tab-slider').css('left', left);
+    }
+ 
+}
+ 
+new StickyNavigation();
+</script>
+<script type="text/javascript">
+ 
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+ 
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+ 
+</script>
+</body>
+</html>
