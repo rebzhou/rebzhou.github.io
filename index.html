@@ -14,7 +14,8 @@
 <style>
 body { font-family: "Lato", sans-serif; }
  
-a { text-decoration: none; }
+a  {color: #eee;}  
+a:hover {color: #f4424e;}
  
 .spa-header {
   display: -webkit-box;
@@ -78,7 +79,11 @@ a { text-decoration: none; }
     background-image: url("images/background.png") !important;
     background-size: cover !important;
 }
- 
+
+.spa-slide {
+    display: flex !important;
+}
+    
 .sticky-nav-tabs, .spa-slide {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -109,14 +114,14 @@ a { text-decoration: none; }
  
 .sticky-nav-tabs h2, .spa-slide h2 {
   font-size: 2rem;
+  margin-top: -10px;
   letter-spacing: .5rem;
 }
 .sticky-nav-tabs h3, .spa-slide h3 {
   font-size: 1rem;
   letter-spacing: 0.2rem;
   opacity: 0.6;
-  padding-top: -30px;
-  padding-bottom: 40px;
+  margin-top: -24px;
 }
 .sticky-nav-tabs h4, .spa-slide h4 {
   font-size: 1rem;
@@ -124,7 +129,6 @@ a { text-decoration: none; }
   opacity: 0.6;
   padding-top: -30px;
   padding-bottom: 40px;
-  color: #d7bef4;
 }
 .sticky-nav-tabs-container {
   display: -webkit-box;
@@ -210,32 +214,39 @@ a { text-decoration: none; }
  
 .sticky-nav-tab { font-size: 1rem; }
 }
- 
+
 .footer { 
     display: block;
-    height: 30px;
-    background: #404271;
-    color: #eee; 
+    height: 50px;
+    background: #705d87;
+    color: #eee;    
+    padding-left: 1.5%;
+    padding-top: 0.005%;
 }
+    
 </style>
 </head>
  
-<body>
- 
-<!--- NAV BAR SECTIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN-->     
- 
-<a name="top"></a>
+    
+<!--- NAV BAR SECTIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN--> 
+    
+    
+<body> 
+    <a name="top"></a>
 <header class="spa-h1header">
   <div class="spa-header"> 
-      <a href="#top" class="spa-header__logo">  <img src=images/headshot.png width="55" height="55" hspace="30px"> </a>
+      <a href="#top" class="spa-header__logo">
+      <img src=images/headshot.png width="55" height="55" hspace="30px"> </a>
       <a href="https://instagram.com/b.zhou/" target="_blank" class="spa-header__social-media" >  <img src=https://www.shareicon.net/data/128x128/2017/02/07/878228_camera_512x512.png width="40" height="40" align-content="right" !important justify-content="right"!important> </a>
       <a href=https://twitter.com/traderzhous target="_blank" class="spa-header__social-media"> <img src=https://www.shareicon.net/data/128x128/2016/10/18/844122_media_512x512.png width="40" height="40"> </a>
       <a href="https://www.youtube.com/user/beccazhou" target="_blank" class="spa-header__social-media"> <img src=https://www.shareicon.net/data/128x128/2016/10/18/844119_media_512x512.png width="40" height="40"> </a>
       <a href="https://www.linkedin.com/in/beccazhou/" target="_blank" class="spa-header__social-media"> <img src=https://www.shareicon.net/data/128x128/2016/12/21/865490_media_512x512.png width="40" height="40"> </a> </div>
 </header>
  
+    
 <!--- MAIN HEADER SECTIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN-->    
 
+    
 <section class="sticky-nav-tabs main-page">
 <div class="welcome">
   <h1>Welcome to Rebecca's Portfolio</h1>
@@ -244,8 +255,10 @@ a { text-decoration: none; }
 </section>
 <main class="spa-main">
  
+    
 <!--- ABOUT MEEEEEEEE SECTIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN-->
  
+    
   <section class="spa-slide" id="tab-about">
   
       <vid-head>
@@ -269,8 +282,8 @@ a { text-decoration: none; }
 <!--- VIDEO SECTIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN-->
  
 <section class="spa-slide" id="tab-videos">
-  <h2>Video Portfolio</h2>
-  <h3>Enjoy this shiz I made okthxbye.</h3>
+  <h2 style="margin-top: 50px">Video Portfolio</h2>
+  <h3 style="margin-bottom: 52px">Enjoy this shiz I made okthxbye.</h3>
   <grid-head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -282,7 +295,7 @@ a { text-decoration: none; }
     <link rel="stylesheet" type="text/css" href="css/demo.css" />
     <link rel="stylesheet" type="text/css" href="css/elastic_grid.min.css" />
 </grid-head>
-<grid-body style="background:#fff;">
+<grid-body style="background:#fff; margin-bottom: 30px;">
 <div id="elastic_grid_demo"></div>
  
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -539,7 +552,7 @@ form input[type="submit"]:focus {
   background: #cd6302;
 }
  
-    </style>
+</style>
  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
  
@@ -572,24 +585,29 @@ form input[type="submit"]:focus {
   </form>
 </section>
  
+ 
     <script  src="js/index.js"></script>
+ 
+ 
  
       </contact-body>
   </section>
- 
-<!--- FOOTER SECTIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN-->    
+    
+    <!--- FOOTER SECTIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN-->    
 
 <div class="footer">
-  <footer>
-    <p>Thank you to the following websites for helping me create this: <a href=https://www.jqueryscript.net/menu/Sticky-One-Page-Scroll-Navigation-jQuery-CSS3.html" target="_blank">ettrics</a>, <a href=https://www.jqueryscript.net/layout/Responsive-Filterable-jQuery-Portfolio-Gallery-Plugin-Elastic-Grid.html" target="_blank">vukhanhtruong</a>, <a href="http://thenewcode.com/500/Use-YouTube-Videos-as-Fullscreen-Web-Page-Backgrounds" target="_blank">Dudley Storey</a>, and <a href="https://codepen.io/see8ch/pen/KpLrd target=_"blank">Chris Holder</a>
+  <footer> 
+      <p>Thank you to the following for helping me create my website: <a href="https://www.jqueryscript.net/menu/Sticky-One-Page-Scroll-Navigation-jQuery-CSS3.html" target="_blank">ettrics</a>, <a href="https://www.jqueryscript.net/layout/Responsive-Filterable-jQuery-Portfolio-Gallery-Plugin-Elastic-Grid.html" target="_blank">vukhanhtruong</a>, <a href="http://thenewcode.com/500/Use-YouTube-Videos-as-Fullscreen-Web-Page-Backgrounds" target="_blank">Dudley Storey</a>, and <a href="https://codepen.io/see8ch/pen/KpLrd" target="_blank">Chris Holder</a>
     </p>
-  </footer>
- 
+    </footer>
+</div>
+
+
 </main>
- 
  
 <!--- JAVA SHIT SECTIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN-->
 
+ 
 <script>
 class StickyNavigation {
  
