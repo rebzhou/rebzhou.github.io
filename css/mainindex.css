@@ -258,8 +258,27 @@ height: 700px !important;
 max-width: 100%;
 }
 
+
+
 @media (max-width: 1200px) {
   .video-responsive iframe {
   height: 500px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  iframe {
+  margin-top: 3rem !important;
+  }
+}
+
+
+@media (max-width: 991px) {
+  main.spa-main > section:last-child .footer {
+  height: 80px;
+  }
+
+  main.spa-main > section:last-child {
+  padding-bottom: 80px;
   }
 }
